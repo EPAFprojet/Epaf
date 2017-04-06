@@ -976,31 +976,31 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QPushButton" name="listeRepasGroupeJourpushButton">
          <property name="text">
           <string>Obtenir la liste des repas par groupe par jour</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="listeRepaspushButton">
+       <item row="4" column="0">
+        <widget class="QPushButton" name="listeCoachpushButton">
          <property name="text">
-          <string>Obtenir la liste des repas</string>
+          <string>Liste des coachs</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
+       <item row="1" column="0">
         <widget class="QPushButton" name="gererListeGroupepushButton">
          <property name="text">
           <string>Gérer la liste des groupes</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QPushButton" name="listeCoachpushButton">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="listeRepaspushButton">
          <property name="text">
-          <string>Liste des coachs</string>
+          <string>Obtenir la liste des repas</string>
          </property>
         </widget>
        </item>
