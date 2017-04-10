@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->traiteurCheck,SIGNAL(toggled(bool)), this, SLOT(isTraiteur()));
     QObject::connect(ui->CombinecheckBox, SIGNAL(toggled(bool)),this, SLOT(isCombine()));
     QObject::connect(ui->retourBouton, SIGNAL(clicked(bool)),this, SLOT(callMainMenu()));
-    QObject::connect(ui->ConnectpushButton,SIGNAL(clicked(bool)),this,SLOT(callMainMenu()));
+    QObject::connect(ui->connectpushButton,SIGNAL(clicked(bool)),this,SLOT(callMainMenu()));
     QObject::connect(ui->ajouterPatpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterPat()));
     QObject::connect(ui->ajouterCoachpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterCoach()));
     QObject::connect(ui->accesRapidepushButton,SIGNAL(clicked(bool)),this, SLOT(callAccesRapide()));
@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->listeRepaspushButton,SIGNAL(clicked(bool)),this, SLOT(callListeRepas()));
     QObject::connect(ui->gererListeGroupepushButton,SIGNAL(clicked(bool)), this,SLOT(callGestionGroupe()));
     QObject::connect(ui->creationRecuspushButton,SIGNAL(clicked(bool)),this, SLOT (callRecus()));
+
+    QObject::connect(ui->connectpushButton,SIGNAL(clicked(bool)),this,SLOT(connection()));
 }
 
 void MainWindow::isTraiteur()
@@ -145,6 +147,32 @@ void MainWindow::callRecus()
 {
     ui->stackedWidget->setCurrentIndex(10);
     ui->retourBouton->show();
+}
+
+//-========Connexion au système===========================================-
+
+void MainWindow::connection()
+{
+    QSqlQuery queryPassword;
+    queryPassword.prepare(/*Requete pour chercher le mots de passe dans la bd*/);
+    queryPassword.exec();
+    QString password = queryPassword.value("Mot de passe").toString();//À retravailler
+
+    QSqlQuery queryUtiliasteur;
+    queryUtiliasteur.prepare(/*Requete pour chercher le nom d'utilisateur dans la bd*/);
+    queryUtiliasteur.exec();
+    QString nomUtilisateur = queryUtiliasteur.value("Nom utilisateur").toString();//À retravailler
+
+    if(ui->motPasselineEdit->text() == password && ui->nonUtilisateurlineEdit->text() == nomUtilisateur)
+    {
+        ui->statusBar->showMessage("Connecter au système");
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Erreur lors de la connexion au système");
+    }
+
 }
 
 MainWindow::~MainWindow()
