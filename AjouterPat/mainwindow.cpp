@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         QMessageBox::critical(0,QObject::tr("database error"), db.lastError().text());
     }
+    //------------------------------------------Set up des combos box:groupes-------------------------------------\\
+
+
     ui->IDEdit->setEnabled(false);
     ui->retourBouton->hide();
     ui->Lieulabel->hide();

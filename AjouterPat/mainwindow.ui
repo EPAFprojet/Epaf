@@ -228,7 +228,7 @@
         </rect>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -302,9 +302,6 @@
           <item row="2" column="1">
            <widget class="QLineEdit" name="positionlineEdit"/>
           </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="groupeHocklineEdit"/>
-          </item>
           <item row="6" column="1">
            <widget class="QCheckBox" name="CombinecheckBox">
             <property name="text">
@@ -346,6 +343,9 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="groupeHockcomboBox"/>
           </item>
          </layout>
         </widget>
@@ -477,7 +477,7 @@
            <widget class="QLineEdit" name="habiletelineEdit"/>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="PAgroupelineEdit"/>
+           <widget class="QComboBox" name="groupePAcomboBox"/>
           </item>
          </layout>
         </widget>
@@ -510,11 +510,11 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="gourpePOWlineEdit"/>
-          </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="niveauPowlineEdit"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="groupePOWcomboBox"/>
           </item>
          </layout>
         </widget>

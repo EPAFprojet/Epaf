@@ -6,7 +6,8 @@ class PatinageArtistique
 {
 public:
     PatinageArtistique();
-public slots:
+
+public:
     void setPatID(int id);
     void setNoClub(int club);
     void setNivDanse(QString danse);
@@ -23,6 +24,8 @@ private:
     QString mNivHab;
     QString mNivStyle;
     QString mPAGroupe;
+
+
 };
 
 #endif // PATINAGEARTISTIQUE_H
