@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->traiteurCheck,SIGNAL(toggled(bool)), this, SLOT(isTraiteur()));
     QObject::connect(ui->CombinecheckBox, SIGNAL(toggled(bool)),this, SLOT(isCombine()));
     QObject::connect(ui->retourBouton, SIGNAL(clicked(bool)),this, SLOT(callMainMenu()));
-    QObject::connect(ui->connectpushButton,SIGNAL(clicked(bool)),this,SLOT(callMainMenu()));
+  //  QObject::connect(ui->connectpushButton,SIGNAL(clicked(bool)),this,SLOT(callMainMenu()));
     QObject::connect(ui->ajouterPatpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterPat()));
     QObject::connect(ui->ajouterCoachpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterCoach()));
     QObject::connect(ui->accesRapidepushButton,SIGNAL(clicked(bool)),this, SLOT(callAccesRapide()));
@@ -153,15 +153,20 @@ void MainWindow::callRecus()
 
 void MainWindow::connection()
 {
+    QString nomUtilisateur;
+    QString password;
+
     QSqlQuery queryPassword;
-    queryPassword.prepare(/*Requete pour chercher le mots de passe dans la bd*/);
+    queryPassword.prepare("SELECT administrateur.ADM_motDePasse from administrateur");
     queryPassword.exec();
-    QString password = queryPassword.value("Mot de passe").toString();//À retravailler
+    if(queryPassword.next() == true)
+        password = queryPassword.value("ADM_motDePasse").toString();
 
     QSqlQuery queryUtiliasteur;
-    queryUtiliasteur.prepare(/*Requete pour chercher le nom d'utilisateur dans la bd*/);
+    queryUtiliasteur.prepare("SELECT administrateur.ADM_nom from administrateur");
     queryUtiliasteur.exec();
-    QString nomUtilisateur = queryUtiliasteur.value("Nom utilisateur").toString();//À retravailler
+    if(queryUtiliasteur.next() == true)
+        nomUtilisateur = queryUtiliasteur.value("ADM_nom").toString();
 
     if(ui->motPasselineEdit->text() == password && ui->nonUtilisateurlineEdit->text() == nomUtilisateur)
     {

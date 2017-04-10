@@ -55,7 +55,11 @@
         <widget class="QLineEdit" name="nonUtilisateurlineEdit"/>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="motPasselineEdit"/>
+        <widget class="QLineEdit" name="motPasselineEdit">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
