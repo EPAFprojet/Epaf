@@ -1,0 +1,27 @@
+void MainWindow::connection()
+{
+    QString nomUtilisateur;
+    QString password;
+
+    QSqlQuery queryPassword;
+    queryPassword.prepare("SELECT administrateur.ADM_motDePasse from administrateur");
+    queryPassword.exec();
+    if(queryPassword.next() == true)
+        password = queryPassword.value("ADM_motDePasse").toString();
+
+    QSqlQuery queryUtiliasteur;
+    queryUtiliasteur.prepare("SELECT administrateur.ADM_nom from administrateur");
+    queryUtiliasteur.exec();
+    if(queryUtiliasteur.next() == true)
+        nomUtilisateur = queryUtiliasteur.value("ADM_nom").toString();
+
+    if(ui->motPasselineEdit->text() == password && ui->nonUtilisateurlineEdit->text() == nomUtilisateur)
+    {
+        ui->statusBar->showMessage("Connecter au système");
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Erreur lors de la connexion au système");
+    }
+}
