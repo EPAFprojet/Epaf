@@ -30,6 +30,8 @@ public slots:
     void callGestionGroupe();
     void callRecus();
 
+    void connection();
+
 private:
     Ui::MainWindow *ui;
 };
