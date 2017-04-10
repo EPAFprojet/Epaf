@@ -7,7 +7,7 @@ class PowerSkating
 public:
     PowerSkating();  
 
-public:
+public slots:
     void setPowGroupe(QString groupe);
     void setNiveau(QString niv);
 

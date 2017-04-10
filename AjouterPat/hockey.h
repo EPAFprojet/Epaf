@@ -6,7 +6,7 @@ class Hockey
 {
 public:
     Hockey();
-public:
+public slots:
     void setIDpat(int patID);
     void setEquipe(QString equipe);
     void setCategorie(QString cat);

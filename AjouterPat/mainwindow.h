@@ -14,8 +14,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    int nextNumPat;
-public:
+
+public slots:
     void isTraiteur();
     void isCombine();
 
@@ -30,7 +30,7 @@ public:
     void callGestionGroupe();
     void callRecus();
 
-
+    int nextNumPat;
 
 private:
     Ui::MainWindow *ui;

@@ -4,12 +4,10 @@
 #include "Date.h"
 class Patineur
 {
-
 public:
     Patineur();
 
-public:
-
+public slots:
     void setPatNom(QString nom);
     void setPatPrenom(QString prenom);
     void setDateNaissance(Date naissance);

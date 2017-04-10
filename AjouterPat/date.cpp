@@ -85,7 +85,7 @@ bool Date::setMois(int m)
 {
     if (m < 1 || m > 12)
     {
-        //QMessageBox::critical(this, "Erreur:Mois invalide", "Le mois entré est invalide.");
+        //QMessageBox::critical(this, "Erreur:Mois invalide", "Le mois entré est invalide.")
         return false;
     }
     else //MOIS VALIDE
@@ -99,7 +99,7 @@ bool Date::setAnnee(int a)
 {
     if (a < MIN_ANNEE || a > MAX_ANNEE)
     {
-        //QMessageBox::critical(this,"Erreur:Année invalide", "L'année entrée est invalide.");
+       // QMessageBox::critical(this,"Erreur:Année invalide", "L'année entrée est invalide.")
         return false;
     }
     else //ANNÉE VALIDE
@@ -107,4 +107,25 @@ bool Date::setAnnee(int a)
         mA = a;
         return true;
     }
+}
+//---------GET DAY MONTH YEAR-------------//
+int Date::getCurrentDay()
+{
+    time_t t = time(NULL);
+    tm* pointeurTemps = localtime(&t);
+    return pointeurTemps->tm_mday;
+}
+
+int Date::getCurrentMonth()
+{
+    time_t t = time(NULL);
+    tm* pointeurTemps = localtime(&t);
+    return pointeurTemps->tm_mon + 1;
+}
+
+int Date::getCurrentYear()
+{
+    time_t t = time(NULL);
+    tm* pointeurTemps = localtime(&t);
+    return pointeurTemps->tm_year + 1900;
 }

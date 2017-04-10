@@ -14,7 +14,4 @@ void setNiveau(QString niv)
 
 }
 
-void powToBD()
-{
-
-}
+void powToBD();
