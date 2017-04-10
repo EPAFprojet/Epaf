@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="page_6">
      <widget class="QWidget" name="formLayoutWidget_7">
@@ -1067,49 +1067,59 @@
         <x>10</x>
         <y>50</y>
         <width>271</width>
-        <height>101</height>
+        <height>119</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_8">
-       <item row="0" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label_48">
          <property name="text">
           <string>Nom du groupe</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_49">
          <property name="text">
           <string>Prix</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_50">
          <property name="text">
           <string>Description</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_31"/>
-       </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_32"/>
+        <widget class="QLineEdit" name="groupeNomEdit">
+         <property name="maxLength">
+          <number>15</number>
+         </property>
+        </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_33"/>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="groupeDescritpionEdit">
+         <property name="maxLength">
+          <number>50</number>
+         </property>
+        </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_58">
          <property name="text">
           <string>Type de camp</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox_2">
+       <item row="4" column="1">
+        <widget class="QComboBox" name="groupeTypeCampEdit">
+         <item>
+          <property name="text">
+           <string>Aucun</string>
+          </property>
+         </item>
          <item>
           <property name="text">
            <string>Patinage artistique</string>
@@ -1127,9 +1137,22 @@
          </item>
         </widget>
        </item>
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="groupePrixSpinBox">
+         <property name="locale">
+          <locale language="English" country="Canada"/>
+         </property>
+         <property name="maximum">
+          <double>500.000000000000000</double>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="ajouterGroupeButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>80</x>

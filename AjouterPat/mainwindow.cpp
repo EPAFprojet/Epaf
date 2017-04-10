@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QtSql>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -25,19 +26,31 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->ValiderpushButton->setStyleSheet("background-color: green");
     ui->traiteurWid->hide();
     ui->traiteurTitre->hide();
-    QObject::connect(ui->traiteurCheck,SIGNAL(toggled(bool)), this, SLOT(isTraiteur()));
-    QObject::connect(ui->CombinecheckBox, SIGNAL(toggled(bool)),this, SLOT(isCombine()));
-    QObject::connect(ui->retourBouton, SIGNAL(clicked(bool)),this, SLOT(callMainMenu()));
-    QObject::connect(ui->ConnectpushButton,SIGNAL(clicked(bool)),this,SLOT(callMainMenu()));
-    QObject::connect(ui->ajouterPatpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterPat()));
-    QObject::connect(ui->ajouterCoachpushButton,SIGNAL(clicked(bool)),this, SLOT(callAjouterCoach()));
-    QObject::connect(ui->accesRapidepushButton,SIGNAL(clicked(bool)),this, SLOT(callAccesRapide()));
-    QObject::connect(ui->recherchepushButton,SIGNAL(clicked(bool)),this, SLOT(callRecherche()));
-    QObject::connect(ui->listeCoachpushButton,SIGNAL(clicked(bool)),this, SLOT(callListeCoach()));
-    QObject::connect(ui->listeRepasGroupeJourpushButton,SIGNAL(clicked(bool)),this, SLOT(callListeRepasJour()));
-    QObject::connect(ui->listeRepaspushButton,SIGNAL(clicked(bool)),this, SLOT(callListeRepas()));
-    QObject::connect(ui->gererListeGroupepushButton,SIGNAL(clicked(bool)), this,SLOT(callGestionGroupe()));
-    QObject::connect(ui->creationRecuspushButton,SIGNAL(clicked(bool)),this, SLOT (callRecus()));
+    QObject::connect(ui->traiteurCheck,                  SIGNAL(toggled(bool)), this, SLOT(isTraiteur()));
+    QObject::connect(ui->CombinecheckBox,                SIGNAL(toggled(bool)), this, SLOT(isCombine()));
+    QObject::connect(ui->retourBouton,                   SIGNAL(clicked(bool)), this, SLOT(callMainMenu()));
+    QObject::connect(ui->ConnectpushButton,              SIGNAL(clicked(bool)), this, SLOT(callMainMenu()));
+    QObject::connect(ui->ajouterPatpushButton,           SIGNAL(clicked(bool)), this, SLOT(callAjouterPat()));
+    QObject::connect(ui->ajouterCoachpushButton,         SIGNAL(clicked(bool)), this, SLOT(callAjouterCoach()));
+    QObject::connect(ui->accesRapidepushButton,          SIGNAL(clicked(bool)), this, SLOT(callAccesRapide()));
+    QObject::connect(ui->recherchepushButton,            SIGNAL(clicked(bool)), this, SLOT(callRecherche()));
+    QObject::connect(ui->listeCoachpushButton,           SIGNAL(clicked(bool)), this, SLOT(callListeCoach()));
+    QObject::connect(ui->listeRepasGroupeJourpushButton, SIGNAL(clicked(bool)), this, SLOT(callListeRepasJour()));
+    QObject::connect(ui->listeRepaspushButton,           SIGNAL(clicked(bool)), this, SLOT(callListeRepas()));
+    QObject::connect(ui->gererListeGroupepushButton,     SIGNAL(clicked(bool)), this, SLOT(callGestionGroupe()));
+    QObject::connect(ui->creationRecuspushButton,        SIGNAL(clicked(bool)), this, SLOT (callRecus()));
+
+
+    //======================================== GROUPES ===========================================//
+
+    QObject::connect(ui->ajouterGroupeButton,   SIGNAL(clicked(bool)),            this, SLOT(AjouterGroupe()));
+    QObject::connect(ui->ajouterGroupeButton,   SIGNAL(clicked(bool)),            this, SLOT(validerAjouterGroupe()));
+    QObject::connect(ui->groupeNomEdit,         SIGNAL(textChanged(QString)),     this, SLOT(validerAjouterGroupe()));
+    QObject::connect(ui->groupeDescritpionEdit, SIGNAL(textChanged(QString)),     this, SLOT(validerAjouterGroupe()));
+    QObject::connect(ui->groupePrixSpinBox,     SIGNAL(valueChanged(QString)),    this, SLOT(validerAjouterGroupe()));
+    QObject::connect(ui->groupeTypeCampEdit,    SIGNAL(currentIndexChanged(int)), this, SLOT(validerAjouterGroupe()));
+
+
 }
 
 void MainWindow::isTraiteur()
@@ -146,6 +159,48 @@ void MainWindow::callRecus()
     ui->stackedWidget->setCurrentIndex(10);
     ui->retourBouton->show();
 }
+
+void MainWindow::AjouterGroupe()
+{
+    QSqlQuery query;
+    query.prepare ("INSERT INTO `groupe` (`GRO_nom`, `GRO_description`, `GRO_typeCamp`, `GRO_prix`) VALUES ('"+ ui->groupeNomEdit->text() +"', '"+ ui->groupeDescritpionEdit->text() +"', '"+ ui->groupeTypeCampEdit->currentText() +"', '"+ ui->groupePrixSpinBox->text() +"')");
+    query.exec();
+
+    ui->groupeNomEdit->clear();
+    ui->groupeDescritpionEdit->clear();
+    ui->groupePrixSpinBox->setValue(0.00);
+    ui->groupeTypeCampEdit->setCurrentIndex(0);
+}
+
+void MainWindow::validerAjouterGroupe()
+{
+    bool result = false;
+
+    if((ui->groupeNomEdit->text().isEmpty() == false)&&(ui->groupeDescritpionEdit->text().isEmpty() == false)&&(ui->groupeTypeCampEdit->currentIndex() != 0))
+    {
+        result = true;
+    }
+
+    ui->ajouterGroupeButton->setEnabled(result);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 MainWindow::~MainWindow()
 {

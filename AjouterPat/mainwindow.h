@@ -29,6 +29,8 @@ public slots:
     void callListeRepasJour();
     void callGestionGroupe();
     void callRecus();
+    void AjouterGroupe();
+    void validerAjouterGroupe();
 
 private:
     Ui::MainWindow *ui;
