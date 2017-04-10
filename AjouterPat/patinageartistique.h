@@ -7,6 +7,7 @@ class PatinageArtistique
 public:
     PatinageArtistique();
 public slots:
+public:
     void setPatID(int id);
     void setNoClub(int club);
     void setNivDanse(QString danse);

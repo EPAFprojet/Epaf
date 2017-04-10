@@ -86,6 +86,7 @@ bool Date::setMois(int m)
     if (m < 1 || m > 12)
     {
         //QMessageBox::critical(this, "Erreur:Mois invalide", "Le mois entré est invalide.")
+        //QMessageBox::critical(this, "Erreur:Mois invalide", "Le mois entré est invalide.");
         return false;
     }
     else //MOIS VALIDE
@@ -100,6 +101,7 @@ bool Date::setAnnee(int a)
     if (a < MIN_ANNEE || a > MAX_ANNEE)
     {
        // QMessageBox::critical(this,"Erreur:Année invalide", "L'année entrée est invalide.")
+       //QMessageBox::critical(this,"Erreur:Année invalide", "L'année entrée est invalide.");
         return false;
     }
     else //ANNÉE VALIDE

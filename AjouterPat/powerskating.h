@@ -8,6 +8,7 @@ public:
     PowerSkating();  
 
 public slots:
+public :
     void setPowGroupe(QString groupe);
     void setNiveau(QString niv);
 

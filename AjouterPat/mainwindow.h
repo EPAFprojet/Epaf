@@ -15,6 +15,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    int nextNumPat;
 public slots:
     void isTraiteur();
     void isCombine();
@@ -31,6 +32,7 @@ public slots:
     void callRecus();
 
     int nextNumPat;
+    void callRecus();  
 
 private:
     Ui::MainWindow *ui;
