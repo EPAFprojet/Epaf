@@ -116,7 +116,7 @@ void MainWindow::callListeRepas()
     ui->retourBouton->show();
     QSqlQuery query;
     QSqlQueryModel *model = new QSqlQueryModel();
-    query.exec("SELECT COUNT(hockey.HOC_traitLundi) AS Total , hockey.HOC_traitLundi AS Repas FROM hockey WHERE hockey.HOC_Traiteur = 1 GROUP BY hockey.HOC_traitLundi UNION SELECT COUNT(hockey.HOC_traitMardi) AS Total , hockey.HOC_traitMardi FROM hockey WHERE hockey.HOC_Traiteur = 1 GROUP BY hockey.HOC_traitMardi UNION SELECT COUNT(hockey.HOC_traitMercredi) AS Total , hockey.HOC_traitMercredi FROM hockey WHERE hockey.HOC_Traiteur = 1 GROUP BY hockey.HOC_traitMercredi UNION SELECT COUNT(hockey.HOC_traitJeudi) AS Total , hockey.HOC_traitJeudi FROM hockey WHERE hockey.HOC_Traiteur = 1 GROUP BY hockey.HOC_traitJeudi");
+    query.exec("");
     model->setQuery(query);
     ui->listeRepastableView->setModel(model);
 }

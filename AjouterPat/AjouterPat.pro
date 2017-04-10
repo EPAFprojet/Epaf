@@ -25,10 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    patineur.cpp \
+    hockey.cpp \
+    powerskating.cpp \
+    patinageartistique.cpp \
+    date.cpp
 
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    patineur.h \
+    hockey.h \
+    powerskating.h \
+    patinageartistique.h \
+    date.h
 
 
 FORMS    += mainwindow.ui
