@@ -30,7 +30,7 @@ public slots:
     void callGestionGroupe();
     void callRecus();
 
-    void connection();
+    int nextNumPat;
 
 private:
     Ui::MainWindow *ui;
